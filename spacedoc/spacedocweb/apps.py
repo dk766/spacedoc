@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class SpacedocwebConfig(AppConfig):
-    name = 'spacedocweb'
+class SpaceDocWebConfig(AppConfig):
+    name = 'spacedoc.spacedocweb'

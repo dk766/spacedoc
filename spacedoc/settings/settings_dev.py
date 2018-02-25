@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+print("BASE_DIR={}".format(BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_tables2',
+    'spacedoc.spacedocweb.apps.SpaceDocWebConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +53,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'spacedoc.urls'
+
+
+# print("TEMPLATE_DIRS={}".format(TEMPLATE_DIRS))
+
 
 TEMPLATES = [
     {
@@ -69,14 +76,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'spacedoc.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'spacedoc',
+        'USER': 'space',
+        'PASSWORD': 'vali1234',
+        'HOST': '192.168.1.103',
+        'PORT': '',
     }
 }
 
@@ -118,3 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR + '/static/',
+]
+# STATIC_ROOT = BASE_DIR + '/static/'
