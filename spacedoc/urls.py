@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-# from spacedoc.spacedocweb import urls
+# from spacedoc.docid import urls
 
 urlpatterns = [
-    url(r'^spacedoc/', include('spacedoc.spacedocweb.urls')),
+    url(r'^spacedoc/', include('spacedoc.docweb.urls')),
     url(r'^admin/', admin.site.urls),
 
     # url(r'^$', urls.login_view),

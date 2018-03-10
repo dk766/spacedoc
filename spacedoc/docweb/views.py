@@ -21,7 +21,8 @@ def wip_view(request):
 
 def search_view(request):
     context = {}
-    return render(request, 'docweb/search.html', context)
+    return docs_view(request)
+    # return render(request, 'docweb/search.html', context)
 
 
 def docs_view(request):

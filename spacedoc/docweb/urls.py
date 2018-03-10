@@ -14,5 +14,5 @@ urlpatterns = [
     # url(r'^login/$', login_view, name='spacedoc_login'),
     # url(r'^logout/$', logout_view, name='spacedoc_logout'),
 
-    url(r'^wip/$', wip_view, name='spacedoc_docs'),
+    # url(r'^wip/$', wip_view, name='spacedoc_docs'),
 ]
