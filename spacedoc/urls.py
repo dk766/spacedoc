@@ -19,7 +19,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^spacedoc/', include('spacedoc.docweb.urls')),
+    url(r'^docid/', include('spacedoc.docid.urls')),
+    url(r'^docstorage/', include('spacedoc.docstorage.urls')),
     url(r'^admin/', admin.site.urls),
 
     # url(r'^$', urls.login_view),
 ]
+

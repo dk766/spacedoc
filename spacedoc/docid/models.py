@@ -27,37 +27,44 @@ class DocIdTemplateField(models.Model):
         (DocIdTemplateTypes.CONSTANT, DocIdTemplateTypes.CONSTANT),
         (DocIdTemplateTypes.RUNNING_ID, DocIdTemplateTypes.RUNNING_ID),
     )
-    template = models.ForeignKey(DocIdTemplate, on_delete=models.CASCADE, null=True)
     field_name = models.CharField(max_length=50)
     field_type = models.CharField(max_length=15, choices=TYPES, null=False, blank=False,
                                   default=DocIdTemplateTypes.CONSTANT)
     description = models.TextField()
 
 
-class Constant(models.Model):
+class TypeConstant(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     value = models.CharField(max_length=50)
 
 
-class Sequence(models.Model):
+class TypeSequence(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     position = models.IntegerField()
     value = models.CharField(max_length=50)
 
 
-class Map(models.Model):
+class TypeMap(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     key = models.CharField(max_length=50)
     value = models.CharField(max_length=200)
 
 
-class Tree(models.Model):
+class TypeTree(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     key = models.CharField(max_length=50)
     value = models.CharField(max_length=200)
     parent_key = models.CharField(max_length=50, null=True)
 
 
-class RunningId(models.Model):
+class TypeRunningId(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     fields_list = models.CharField(max_length=500)
+    digits_number = models.IntegerField(default=4)
+
+
+class RunningIds(models.Model):
+    running_id = models.ForeignKey(TypeRunningId, on_delete=models.SET_NULL, null=True)
+    template_id = models.ForeignKey(DocIdTemplate, on_delete=models.SET_NULL, null=True)
+    fields_list_value = models.CharField(max_length=500)
+    running_id_value = models.IntegerField(default=0)

@@ -26,7 +26,7 @@ def search_view(request):
 
 
 def docs_view(request):
-    context ={}
+    context = {}
     db_entries = DocumentEntity.objects.all()
     table = DocsTable(db_entries)
     context['total_docs_num'] = len(db_entries)

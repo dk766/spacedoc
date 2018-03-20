@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import logging
+from spacedoc.docid.core.misc import configure_default
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,6 +58,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'spacedoc.urls'
 
+configure_default(logging.DEBUG)
 
 # print("TEMPLATE_DIRS={}".format(TEMPLATE_DIRS))
 
@@ -96,7 +99,16 @@ DATABASES = {
         'PASSWORD': 'vali1234',
         'HOST': '192.168.1.103',
         'PORT': '',
+    },
+    'docdb': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'spacedb',
+        'USER': 'space',
+        'PASSWORD': 'vali1234',
+        'HOST': '192.168.1.103',
+        'PORT': '',
     }
+
 }
 
 
@@ -158,7 +170,11 @@ LOGGING = {
         },
         "django_python3_ldap": {
             "handlers": ["console"],
-            "level": "INFO",
+            "level": "DEBUG",
+        },
+        "spacedoc.docid": {
+            "handlers": ["console"],
+            "level": "DEBUG",
         },
     }
 }

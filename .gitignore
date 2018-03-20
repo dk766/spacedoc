@@ -7,7 +7,6 @@ __pycache__/
 *.sublime-*
 db.sqlite3
 env/
-manage.py
 spacedoc/settings.py
-spacedoc/spacedocweb/templates/gentela/
+spacedoc/docweb/templates/gentela/
 
