@@ -1,6 +1,10 @@
+import json
+
 from django.db import models
 from django.contrib.auth.models import User, Group
-import json
+from spacedoc.docid.core.misc import get_tags
+from spacedoc.docid.core.constants import TAG_START, TAG_END
+
 
 # Create your models here.
 
@@ -11,10 +15,14 @@ class DocIdTemplate(models.Model):
     long_form = models.CharField(max_length=100)
     description = models.TextField()
 
+    def get_field_names(self):
+        return get_tags(self.long_form, TAG_START, TAG_END)
+
     def to_json(self):
         template_dict = {
-            'name': self.name, 'short_form':self.short_form, 'long_form':self.long_form,
-            'description': self.description
+            'name': self.name, 'short_form':self.short_form, 'long_form': self.long_form,
+            'description': self.description,
+            'fields': self.get_field_names(),
         }
         return json.dumps(template_dict)
 
@@ -55,7 +63,6 @@ class DocIdFieldValue(models.Model):
     value = models.CharField(max_length=50)
 
 
-
 class TypeConstant(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
     value = models.CharField(max_length=50)
@@ -77,9 +84,9 @@ class TypeSequence(models.Model):
         ob_dict = {'position': self.position, 'value': self.value, }
         return ob_dict
 
-
     def to_json(self):
         return json.dumps(self.to_dict())
+
 
 class TypeMap(models.Model):
     field_name = models.ForeignKey(DocIdTemplateField, on_delete=models.SET_NULL, null=True)
@@ -119,4 +126,3 @@ class TypeRunningId(models.Model):
 
     def to_json(self):
         return json.dumps(self.to_dict())
-

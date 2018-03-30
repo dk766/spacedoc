@@ -10,12 +10,6 @@ from spacedoc.docid.core.docid_utils import docid_generate_next_id, docid_get_te
     docid_get_field_values_by_docid, docid_register_id
 
 
-def docdb_migrate_view(request):
-    context = {}
-    migrate()
-    return HttpResponse('Migraton Done')
-
-
 def docid_generate_next_id_view(request, template_id):
     context = {''}
     params = {'originator': 'INSTITUTION', 'project_element': 'BRANCH', 'doc_type': 'MOM', 'issue': 3, 'revision': 5}

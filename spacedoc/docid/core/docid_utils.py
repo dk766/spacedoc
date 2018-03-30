@@ -3,16 +3,11 @@ __email__ = "vchifu@gmail.com"
 __version__ = "$"
 __date__ = "$"
 
-import json
-
 from spacedoc.docid.models import DocIdTemplate, DocIdTemplateField, DocIdTemplateTypes, TypeRunningId, \
     TypeConstant, TypeMap, TypeSequence, TypeTree, DocIdFieldValue
 from spacedoc.docid.core.misc import logger as log
 from spacedoc.docid.core.misc import get_tags
-
-
-TAG_START = '<'
-TAG_END = '>'
+from spacedoc.docid.core.constants import TAG_START, TAG_END
 
 
 def docid_generate_next_id(template_id, params):
