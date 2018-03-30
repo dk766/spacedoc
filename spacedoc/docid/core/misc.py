@@ -25,6 +25,6 @@ def logger(object=None):
     return logging.getLogger(full_name)
 
 
-def get_tags(s, open_delim ='<', close_delim ='>' ):
-    return re.findall(r'{}(.+?){}'.format(open_delim, close_delim), s)
+def get_tags(str, open_delim ='<', close_delim ='>' ):
+    return re.findall(r'{}(.+?){}'.format(open_delim, close_delim), str)
 
