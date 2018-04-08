@@ -167,7 +167,7 @@ def docid_get_templates():
     template_models = DocIdTemplate.objects.all()
     templates_list = []
     for template_model in template_models:
-        templates_list.append(template_model.to_json())
+        templates_list.append(template_model.to_dict())
     return templates_list
 
 

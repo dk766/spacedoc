@@ -18,13 +18,15 @@ class DocIdTemplate(models.Model):
     def get_field_names(self):
         return get_tags(self.long_form, TAG_START, TAG_END)
 
-    def to_json(self):
-        template_dict = {
+    def to_dict(self):
+        return {
             'name': self.name, 'short_form':self.short_form, 'long_form': self.long_form,
             'description': self.description,
             'fields': self.get_field_names(),
         }
-        return json.dumps(template_dict)
+
+    def to_json(self):
+        return json.dumps(self.to_dict())
 
 
 class DocIdTemplateTypes:

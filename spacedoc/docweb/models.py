@@ -10,7 +10,8 @@ class DocumentStatus(models.Model):
 
 
 class DocumentEntity(models.Model):
-    docid = models.CharField(max_length=100)
+    docid = models.CharField(max_length=200)
+    docfields = models.CharField(max_length=200)
     status = models.ForeignKey(DocumentStatus, on_delete=models.PROTECT)  # former Approved with 1 or 0
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
@@ -21,7 +22,4 @@ class DocumentEntity(models.Model):
     doc_date = models.DateField()
     doc = models.CharField(max_length=200)
     zip = models.CharField(max_length=200)
-
-
-
-
+    template_id = models.IntegerField(default=1)

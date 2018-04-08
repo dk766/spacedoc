@@ -16,14 +16,15 @@
                 <a><i class="fa fa-home"></i> Home</a>
             </li>
             <li>
-                <a><i href="{% url 'spacedoc_search' %}" class="fa fa-search"></i> Search documents</a>
+                <a href="{% url 'spacedoc_register_doc' %}"><i class="fa fa-edit"></i>Register new document</a>
             </li>
             <li>
-                <a><i href="{% url 'spacedoc_search' %}" class="fa fa-search-plus"></i> Search documents content</a>
+                <a href="{% url 'spacedoc_search' %}"><i class="fa fa-search"></i> Search documents</a>
             </li>
             <li>
-                <a><i class="fa fa-edit" href="#"></i>Register Doc</a>
+                <a href="{% url 'spacedoc_docs' %}"><i class="fa fa-search-plus"></i> Search documents content</a>
             </li>
+
         </ul>
     </div>
 

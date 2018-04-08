@@ -1,0 +1,41 @@
+{% extends "docweb/page.html" %}
+{% load render_table from django_tables2 %}
+{% load static %}
+{% load poll_extras %}
+
+{% block page_title%}Register document{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Create and Register a Document Id</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <p class="text-muted font-13 m-b-30">
+                    Dodument Id format: <code>{{docid_template}}</code>
+                </p>
+                {% for field_name,value in params.items %}
+                <p>
+                    <code>{{field_name}} - {{params|get_item:field_name}} {{params.field_name}}</code>
+                </p>
+                    {% if value.field_type == 'MAP' %}
+                    <select class="select2_single form-control" tabindex="-1">
+                        <option></option>
+                        {% for entry in value.values %}
+                        <option value="{{short}}">{{entry.key}} -  {{entry.value}}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                {% endfor %}
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
