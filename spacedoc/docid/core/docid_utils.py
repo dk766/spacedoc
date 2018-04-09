@@ -168,6 +168,7 @@ def docid_get_templates():
     templates_list = []
     for template_model in template_models:
         templates_list.append(template_model.to_dict())
+    log().error("Template list=%s", templates_list)
     return templates_list
 
 
