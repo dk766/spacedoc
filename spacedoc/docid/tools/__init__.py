@@ -1,0 +1,5 @@
+__author__ = "Valerian Chifu"
+__email__ = "chifuv@mps.mpg.de"
+__copyright__ = "Copyright 2018, Max Planck Institute for Solar System Research"
+__version__ = "$"
+__date__ = "$"

@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic.base import TemplateView
@@ -35,7 +37,7 @@ def wip_view(request):
         version = tmp.pop(0)[1:]
         elems = elems + version.split('.')
         log().info("Elements are: %s", elems)
-        formatted_text = '<' + '><'.join(elems) + '>'
+        formatted_text = '{' + '}{'.join(elems) + '}'
         log().info("Formatted text is : %s", formatted_text)
         text = '{}<br><code>{}</code>'.format(text, formatted_text)
         entity.docfields = formatted_text
@@ -52,12 +54,14 @@ def register_view(request):
     template = templates_list[0]
     context['docid_template'] = template['long_form']
     context['fields'] = template['fields']
-    params = {}
+    params = OrderedDict()
     for field_str in template['fields']:
         # context[field_str] = docid_get_field_info(field_str)['values']
         model_dict = docid_get_field_info(field_str)
         params[field_str] = model_dict
+
     context['params'] = params
+    log().error("Params:'%s'", params)
 
     return render(request, 'docweb/register_doc.html', context)
 

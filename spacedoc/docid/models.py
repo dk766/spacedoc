@@ -16,7 +16,8 @@ class DocIdTemplate(models.Model):
     description = models.TextField()
 
     def get_field_names(self):
-        return get_tags(self.long_form, TAG_START, TAG_END)
+        # return get_tags(self.long_form, TAG_START, TAG_END)
+        return get_tags(self.long_form, '{', '}')
 
     def to_dict(self):
         return {
